@@ -45,19 +45,19 @@ if (isset($_POST['function'])) {
     <div>
         <label>
             Ваш логин
-            <input type="text" name="login" value="<?= htmlspecialchars($_POST['login'] ?? '') ?>" required>
+            <input type="text" name="login" value="" required>
         </label>
     </div>
     <div>
         <label>
             Subdomain
-            <input type="text" name="subdomain" value="<?= htmlspecialchars($_POST['subdomain'] ?? '') ?>" required>
+            <input type="text" name="subdomain" value="" required>
         </label>
     </div>
     <div>
         <label>
             ApiKey
-            <input type="text" name="apiKey" value="<?= htmlspecialchars($_POST['apiKey'] ?? '') ?>" required>
+            <input type="text" name="apiKey" value="" required>
         </label>
     </div>
     <input type="submit" value="Войти">
