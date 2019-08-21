@@ -11,7 +11,6 @@ function bindLeadContact($subdomain, $contactId, $leadId)
     ];
     return execCurl($link, $leads);
 }
-
 function addLead($subdomain, $nameLead, $saleLead)
 {
     $link = genLink($subdomain, '.amocrm.ru/api/v2/leads');
@@ -23,7 +22,6 @@ function addLead($subdomain, $nameLead, $saleLead)
     ];
     return execCurl($link, $leads);
 }
-
 function addContact($subdomain, $nameContact)
 {
     $link = genLink($subdomain, '.amocrm.ru/api/v2/contacts');
@@ -34,7 +32,6 @@ function addContact($subdomain, $nameContact)
     ];
     return execCurl($link, $contacts);
 }
-
 function getLeadsThisMonth($subdomain)
 {
     $link = genLink($subdomain, '.amocrm.ru/api/v2/leads?', 'filter/active');
@@ -42,7 +39,6 @@ function getLeadsThisMonth($subdomain)
     $firstDayOfThisMonth = $date->setTime(0, 0)->format('D, d M Y H:i:s');
     return execCurl($link, NULL, $firstDayOfThisMonth);
 }
-
 function auth($login, $apiKey, $subdomain)
 {
     $user = [
@@ -57,16 +53,16 @@ function auth($login, $apiKey, $subdomain)
     if (isset($response['auth'])) {
         setcookie('login', $login, time()+800);
         setcookie('subdomain', $subdomain, time()+800);
+        print_r('Авторизация успешна!');
         return true;
     }
+    print_r('Ошибка авторизации');
     return false;
 }
-
 function genLink($subdomain, $method, $param = '')
 {
     return 'https://' . $subdomain . $method . $param;
 }
-
 function execCurl($link, $postFields, $httpHeader = '')
 {
     $curl = curl_init();
